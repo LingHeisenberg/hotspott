@@ -1,0 +1,35 @@
+{
+  "name": "eyazs-hotspot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "node backend/src/index.js",
+    "dev:web": "vite --config frontend/vite.config.js --host 0.0.0.0",
+    "db:setup": "node backend/src/scripts/setupDatabase.js",
+    "vouchers:generate": "node backend/src/scripts/generateVouchers.js",
+    "vouchers:sync": "node backend/src/scripts/syncVouchers.js",
+    "vouchers:stock": "node backend/src/scripts/voucherStock.js",
+    "profiles:sync": "node backend/src/scripts/syncProfiles.js",
+    "hotspot:setup": "node backend/src/scripts/setupHotspot.js",
+    "build": "vite build --config frontend/vite.config.js",
+    "start": "node backend/src/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "lucide-react": "^0.468.0",
+    "mysql2": "^3.11.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.5"
+  }
+}

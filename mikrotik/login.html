@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-MZ">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <title>Eyazs Hotspot</title>
+  </head>
+  <body>
+    $(if chap-id)
+    <script>
+      window.__chapId = '$(chap-id)';
+      window.__chapChallenge = '$(chap-challenge)';
+    </script>
+    $(endif)
+
+    <script>
+      const portalUrl = 'http://192.168.1.5:3010/';
+      const params = new URLSearchParams({
+        mac: '$(mac)',
+        ip: '$(ip)',
+        linkorig: '$(link-orig-esc)',
+        loginUrl: '$(link-login-only)'
+      });
+
+      if (window.__chapId && window.__chapChallenge) {
+        params.set('chapId', window.__chapId);
+        params.set('chapChallenge', window.__chapChallenge);
+      }
+
+      window.location.replace(`${portalUrl}?${params.toString()}`);
+    </script>
+
+    <noscript>Ative JavaScript para comprar acesso Wi-Fi.</noscript>
+  </body>
+</html>
